@@ -2,7 +2,7 @@
 
 **Automated Test for Acceptance of Narrative Truth**
 
-An open evaluation framework for measuring AI continuity — the ability to persist, update, disambiguate, and reconstruct meaningful context across time.
+An open evaluation framework for measuring AI continuity : The ability to persist, update, disambiguate, and reconstruct meaningful context across time.
 
 Published by [Kenotic Labs](https://kenoticlabs.com).
 
@@ -22,10 +22,10 @@ Memory stores the past. Continuity keeps the right parts alive in the present.
 
 ATANT is the first published evaluation framework for AI continuity. It is:
 
-- **System-agnostic** — any AI system can be evaluated
-- **Model-independent** — no LLM in the evaluation loop
-- **Narrative-based** — tests use realistic multi-turn conversations, not synthetic fact pairs
-- **Sequenced** — a progressive methodology from isolated correctness to disambiguation at scale
+- **System-agnostic** : Any AI system can be evaluated
+- **Model-independent** : No LLM in the evaluation loop
+- **Narrative-based** : Tests use realistic multi-turn conversations, not synthetic fact pairs
+- **Sequenced** : A progressive methodology from isolated correctness to disambiguation at scale
 
 ATANT defines:
 
