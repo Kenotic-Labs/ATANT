@@ -46,7 +46,7 @@ ATANT defines:
 | 4 | **Disambiguation** | Distinct narratives stay separate despite overlapping vocabulary |
 | 5 | **Reconstruction** | The system answers situation-level questions, not just fact lookups |
 | 6 | **Model Independence** | Continuity lives below the intelligence layer, not inside it |
-| 7 | **Operational Usefulness** | Continuity works across domains — personal, clinical, institutional |
+| 7 | **Operational Usefulness** | Continuity works across domains : Personal, clinical, Institutional |
 
 ---
 
