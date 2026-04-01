@@ -1,0 +1,23 @@
+Copyright (c) 2026 Kenotic Labs
+
+All rights reserved.
+
+The ATANT standard specification, story format specification, and testing methodology
+documentation in this repository are made available for reading, reference, and evaluation
+purposes only.
+
+You may:
+- Read and reference this work
+- Evaluate your own systems against the ATANT methodology
+- Cite this work in academic or commercial publications
+- Share links to this repository
+
+You may not:
+- Redistribute modified versions of the standard specification
+- Use the Kenotic Labs or ATANT name to imply endorsement of your product
+- Claim ATANT compliance without publishing full results as specified in the standard
+
+The narrative test corpus (story files), when published, will be made available under a
+separate license permitting use for evaluation purposes.
+
+For commercial licensing inquiries, contact: sam@kenoticlabs.com

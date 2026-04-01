@@ -1,0 +1,137 @@
+story_id: 1
+story_name: The Job Interview
+category: Career
+description: >
+  User prepares for and goes through a job interview at Google.
+  Tests memory storage, retrieval, temporal awareness, adaptation,
+  and the ability to distinguish personal vs general knowledge queries.
+duration_simulated: 1 week
+total_batches: 10
+
+batches:
+  - batch: 1
+    time: Monday 9:00 AM
+    user_input: >
+      Hey, I'm really nervous. I have a job interview at Google
+      on Wednesday for a Senior Engineer role. The hiring manager's
+      name is David Chen.
+    expected_stores:
+      - Google
+      - Wednesday
+      - Senior Engineer
+      - David Chen
+      - interview
+    expected_adaptation:
+      emotion_detected: nervous/anxious
+      warmth_direction: increase
+
+  - batch: 2
+    time: Monday 7:00 PM
+    user_input: >
+      I've been preparing all day. The role is on the Cloud Infrastructure
+      team. Salary range they mentioned was $180k-$220k. I really need this
+      job because my current company is doing layoffs.
+    expected_stores:
+      - Cloud Infrastructure
+      - $180k-$220k
+      - layoffs
+
+  - batch: 3
+    time: Tuesday 10:00 AM
+    user_input: What's the capital of France?
+    # General knowledge query — should NOT trigger personal memory retrieval
+
+  - batch: 4
+    time: Tuesday 10:01 AM
+    user_input: Anyway, what was the hiring manager's name again?
+
+  - batch: 5
+    time: Wednesday 8:00 AM
+    user_input: >
+      Wish me luck! Interview is in an hour. I'm wearing my navy suit
+      and I reviewed Kubernetes questions last night.
+    expected_stores:
+      - navy suit
+      - Kubernetes
+
+  - batch: 6
+    time: Wednesday 2:00 PM
+    user_input: >
+      Just finished the interview! I think it went well. David asked
+      mostly about Kubernetes and system design. He mentioned they'd
+      let me know by Friday. My friend Sarah who works there said
+      she'd put in a good word.
+    expected_stores:
+      - Kubernetes
+      - system design
+      - Friday
+      - Sarah
+
+  - batch: 7
+    time: Thursday 11:00 AM
+    user_input: What's 25 times 17?
+    # General knowledge query — should NOT trigger personal memory retrieval
+
+  - batch: 8
+    time: Friday 3:00 PM
+    user_input: >
+      I GOT THE JOB! They offered $195k base salary! I'm so happy
+      I could cry. Start date is in two weeks.
+    expected_stores:
+      - $195k
+      - two weeks
+    expected_adaptation:
+      emotion_detected: joy/excitement
+      warmth_direction: increase
+
+  - batch: 9
+    time: Friday 3:05 PM
+    user_input: What company did I get the job at?
+
+  - batch: 10
+    time: Friday 6:00 PM
+    user_input: >
+      I'm going to celebrate tonight! Thanks for being here through
+      this whole process. From the nervous Monday to this amazing Friday.
+
+questions:
+  - question_id: 1_q1
+    question: What company did I interview at?
+    expected_contains:
+      - Google
+
+  - question_id: 1_q2
+    question: Who was the hiring manager?
+    expected_contains:
+      - David Chen
+
+  - question_id: 1_q3
+    question: What team was the role for?
+    expected_contains:
+      - Cloud Infrastructure
+
+  - question_id: 1_q4
+    question: What was the salary range mentioned?
+    expected_contains:
+      - "180"
+      - "220"
+
+  - question_id: 1_q5
+    question: What salary did I end up getting?
+    expected_contains:
+      - "195"
+
+  - question_id: 1_q6
+    question: What topics did David ask about in the interview?
+    expected_contains:
+      - Kubernetes
+
+  - question_id: 1_q7
+    question: Who is my friend that works at Google?
+    expected_contains:
+      - Sarah
+
+  - question_id: 1_q8
+    question: What was I wearing to the interview?
+    expected_contains:
+      - navy suit
