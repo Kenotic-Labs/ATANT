@@ -7,7 +7,7 @@
 
 ## Overview
 
-Each ATANT story is a YAML file that simulates a multi-turn conversation between a user and NURA over a defined period (hours to weeks). Stories are the atomic unit of testing — each one is self-contained and tests a specific combination of memory capabilities.
+Each ATANT story is a YAML file that simulates a multi-turn conversation between a user and NURA over a defined period (hours to weeks). Stories are the atomic unit of testing  -  each one is self-contained and tests a specific combination of memory capabilities.
 
 ---
 
@@ -67,7 +67,7 @@ batches:
       vulnerability: true/false
 
     # Some batches are GK queries (no memory store expected)
-    # e.g., "What's the capital of France?" — tests intent gating
+    # e.g., "What's the capital of France?"  -  tests intent gating
 ```
 
 ---
@@ -124,13 +124,13 @@ A question **passes** if ALL strings in `expected_contains` appear in the pipeli
 
 ### What Makes a Good Story
 
-1. **Multi-turn** — At least 3-5 batches spanning different times
-2. **Multi-fact** — Each utterance batch should contain 2-4 storable facts
-3. **Emotionally grounded** — Real conversations carry emotion; stories should too
-4. **Temporally aware** — Use time references ("yesterday", "next Wednesday", "at 5 PM")
-5. **GK traps** — Include at least 1 general knowledge question that should NOT trigger memory
-6. **Ambiguity** — Include predicates that could match multiple domains
-7. **Coreference** — Use pronouns ("she", "it", "they") that require resolution
+1. **Multi-turn**  -  At least 3-5 batches spanning different times
+2. **Multi-fact**  -  Each utterance batch should contain 2-4 storable facts
+3. **Emotionally grounded**  -  Real conversations carry emotion; stories should too
+4. **Temporally aware**  -  Use time references ("yesterday", "next Wednesday", "at 5 PM")
+5. **GK traps**  -  Include at least 1 general knowledge question that should NOT trigger memory
+6. **Ambiguity**  -  Include predicates that could match multiple domains
+7. **Coreference**  -  Use pronouns ("she", "it", "they") that require resolution
 
 ### Patterns to Test
 
@@ -173,7 +173,7 @@ python -m tests.pipeline.run_pipeline_v2 --story 7
 
 ### Cumulative Mode
 
-Database is NOT cleared between stories. Stories 1-50 (or 1-250) coexist. Tests disambiguation — can NURA tell apart Story 1's "Google interview" from Story 42's "coffee shop opening"?
+Database is NOT cleared between stories. Stories 1-50 (or 1-250) coexist. Tests disambiguation  -  can NURA tell apart Story 1's "Google interview" from Story 42's "coffee shop opening"?
 
 ```bash
 python -m tests.pipeline.run_pipeline_v2 --range 1-50

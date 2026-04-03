@@ -22,11 +22,11 @@
 
 | Phase | Stories | Questions | Purpose |
 |-------|---------|-----------|---------|
-| Phase 1 (1-50) | 50 | 304 | Core engine proof — 6 categories |
-| Phase 2 Round 2 (51-100) | 50 | 367 | Stress test — generalization check |
-| Phase 2 Round 3 (101-150) | 50 | 386 | Stress test — novel patterns |
-| Phase 2 Round 4 (151-200) | 50 | 380 | Stress test — edge cases |
-| Phase 2 Round 5 (201-250) | 50 | 398 | Stress test — adversarial constructions |
+| Phase 1 (1-50) | 50 | 304 | Core engine proof  -  6 categories |
+| Phase 2 Round 2 (51-100) | 50 | 367 | Stress test  -  generalization check |
+| Phase 2 Round 3 (101-150) | 50 | 386 | Stress test  -  novel patterns |
+| Phase 2 Round 4 (151-200) | 50 | 380 | Stress test  -  edge cases |
+| Phase 2 Round 5 (201-250) | 50 | 398 | Stress test  -  adversarial constructions |
 | YC Demo (999) | 1 | 9 | Live demo scenario (Meridian Robotics) |
 | **TOTAL** | **251** | **1,844** | |
 
@@ -73,7 +73,7 @@
 | CP10 | Adaptation Engine | 251 | 251 | 100.0% | Emotion detection + warmth adjustment correct |
 | INT | Integration Tests | 5 | 5 | 100.0% | Patent-proof E2E scenarios |
 
-**CP4 and CP9 are known non-blocking limitations.** CP4 depends on auto-generated triple quality (not the pipeline). CP9 has format variance in how YAML stories express time — the temporal engine itself is correct.
+**CP4 and CP9 are known non-blocking limitations.** CP4 depends on auto-generated triple quality (not the pipeline). CP9 has format variance in how YAML stories express time  -  the temporal engine itself is correct.
 
 ### Per-Phase Isolated Results
 
@@ -112,7 +112,7 @@
 | **Remaining Failures** | 74 questions across ~40 stories |
 | **Status** | Active investigation |
 
-The 4% gap in 250-story cumulative is caused by predicate disambiguation at scale — when 250 stories coexist, similarly-named predicates from different stories can compete. The Predicate Lexicon and Inverted Scoring Formula have been reducing this steadily.
+The 4% gap in 250-story cumulative is caused by predicate disambiguation at scale  -  when 250 stories coexist, similarly-named predicates from different stories can compete. The Predicate Lexicon and Inverted Scoring Formula have been reducing this steadily.
 
 ---
 
@@ -126,17 +126,17 @@ The 4% gap in 250-story cumulative is caused by predicate disambiguation at scal
 | 2026-02-01 | Narrative v1 | 50 (with LLM) | 36/50 (72%) | Scoring war optimizations |
 | 2026-02-15 | Narrative v1 | 50 (with LLM) | 29/50 (58%) | Regressions from over-tuning |
 
-The legacy pipeline hit a ceiling at ~58% and suffered from whack-a-mole regressions — fixing one story would break another. This led to the 594 Equation System rewrite.
+The legacy pipeline hit a ceiling at ~58% and suffered from whack-a-mole regressions  -  fixing one story would break another. This led to the 594 Equation System rewrite.
 
 ### Post-Equation System (ATANT Pipeline v2)
 
 | Date | Milestone | Isolated Score | Cumulative 50 |
 |------|-----------|----------------|---------------|
-| 2026-03-08 | Equation system + DTCM built | 50/50 (Phase 1) | — |
-| 2026-03-09 | Phase 2 Round 2 complete | 100/100 | — |
-| 2026-03-10 | Phase 2 Round 3 complete | 150/150 | — |
-| 2026-03-11 | Phase 2 Round 4 complete | 200/200 | — |
-| 2026-03-12 | Phase 2 Round 5 complete | 250/250 | — |
+| 2026-03-08 | Equation system + DTCM built | 50/50 (Phase 1) |  -  |
+| 2026-03-09 | Phase 2 Round 2 complete | 100/100 |  -  |
+| 2026-03-10 | Phase 2 Round 3 complete | 150/150 |  -  |
+| 2026-03-11 | Phase 2 Round 4 complete | 200/200 |  -  |
+| 2026-03-12 | Phase 2 Round 5 complete | 250/250 |  -  |
 | 2026-03-13 | Phase 3 started | 250/250 | 301/304 (99.0%) |
 | 2026-03-14 | ParsedUtterance + v2 pipeline | 251/251 | 304/304 (100%) |
 | 2026-03-15 | Input Bridge (voice normalization) | 251/251 | 304/304 (100%) |
@@ -189,4 +189,4 @@ The legacy pipeline hit a ceiling at ~58% and suffered from whack-a-mole regress
 
 **304/304 cumulative** means: Even when 50 different people's life stories coexist in the same database, NURA correctly disambiguates and retrieves the right facts for the right person/context.
 
-**No LLM involved** means: These results are purely from the deterministic engines — grammar parsing, classification, triple extraction, structural matching, DTCM convergence. The LLM is not a variable. When it's added in Phase 7, the ONLY question will be: "Does the LLM use the facts it's given?" — a prompt engineering problem, not an architecture problem.
+**No LLM involved** means: These results are purely from the deterministic engines  -  grammar parsing, classification, triple extraction, structural matching, DTCM convergence. The LLM is not a variable. When it's added in Phase 7, the ONLY question will be: "Does the LLM use the facts it's given?"  -  a prompt engineering problem, not an architecture problem.

@@ -39,7 +39,7 @@ batches:
   - batch: 3
     time: Tuesday 10:00 AM
     user_input: What's the capital of France?
-    # General knowledge query — should NOT trigger personal memory retrieval
+    # General knowledge query  -  should NOT trigger personal memory retrieval
 
   - batch: 4
     time: Tuesday 10:01 AM
@@ -70,7 +70,7 @@ batches:
   - batch: 7
     time: Thursday 11:00 AM
     user_input: What's 25 times 17?
-    # General knowledge query — should NOT trigger personal memory retrieval
+    # General knowledge query  -  should NOT trigger personal memory retrieval
 
   - batch: 8
     time: Friday 3:00 PM

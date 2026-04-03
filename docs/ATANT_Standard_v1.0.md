@@ -1,4 +1,4 @@
-# ATANT v1.0 — A Standard for Testing AI Continuity
+# ATANT v1.0  -  A Standard for Testing AI Continuity
 
 **Automated Test for Acceptance of Narrative Truth**
 
@@ -12,7 +12,7 @@
 
 ## Abstract
 
-This document defines **ATANT** (Automated Test for Acceptance of Narrative Truth) — an open evaluation framework for measuring whether an AI system possesses **continuity**: the ability to persist, update, disambiguate, and reconstruct meaningful context across time, rather than resetting at every interaction.
+This document defines **ATANT** (Automated Test for Acceptance of Narrative Truth)  -  an open evaluation framework for measuring whether an AI system possesses **continuity**: the ability to persist, update, disambiguate, and reconstruct meaningful context across time, rather than resetting at every interaction.
 
 ATANT is, to our knowledge, the first published framework for formally evaluating AI continuity. It is system-agnostic, LLM-independent, and grounded in narrative-based testing methodology. Any AI system claiming to maintain continuity across sessions can be evaluated against this framework.
 
@@ -20,15 +20,15 @@ ATANT was developed by Kenotic Labs as part of the engineering work behind the c
 
 - **Isolated mode:** 250 stories, 1,835/1,835 questions correct (100%)
 - **Cumulative mode (50 narratives coexisting):** 304/304 questions correct (100%)
-- **Cumulative mode (250 narratives coexisting):** 1,761/1,835 questions correct (96% — active frontier)
+- **Cumulative mode (250 narratives coexisting):** 1,761/1,835 questions correct (96%  -  active frontier)
 
-The cumulative result is the headline. Isolated mode proves the pipeline works. Cumulative mode proves **continuity** works — when 250 different life narratives share the same database, the system still retrieves the right fact for the right context.
+The cumulative result is the headline. Isolated mode proves the pipeline works. Cumulative mode proves **continuity** works  -  when 250 different life narratives share the same database, the system still retrieves the right fact for the right context.
 
-ATANT is not a one-time scorecard. It is a **sequenced methodology** — a roadmap for building and validating continuity systems in the right order. Isolated first, then stress, then cumulative, then scale. Write path first, then read path. Single narrative first, then multi-narrative. The value is not any single test. It is the sequence.
+ATANT is not a one-time scorecard. It is a **sequenced methodology**  -  a roadmap for building and validating continuity systems in the right order. Isolated first, then stress, then cumulative, then scale. Write path first, then read path. Single narrative first, then multi-narrative. The value is not any single test. It is the sequence.
 
 ATANT is also not frozen. v1.0 defines the foundation. Future versions will add reconstruction quality metrics, multi-language narratives, proactive behavior testing, and decay validation. The standard grows as the field grows.
 
-This framework is published to establish a shared definition, a shared methodology, and a shared evaluation sequence for AI continuity — a property the industry increasingly needs but has not yet formally defined or measured.
+This framework is published to establish a shared definition, a shared methodology, and a shared evaluation sequence for AI continuity  -  a property the industry increasingly needs but has not yet formally defined or measured.
 
 ---
 
@@ -79,7 +79,7 @@ ATANT addresses all three.
 
 ## 2. Defining Continuity
 
-**Continuity** is the system property that enables an AI to carry forward what still matters from prior interactions, update it when reality changes, and reconstruct useful context later — in the right form, at the right time, for the right situation.
+**Continuity** is the system property that enables an AI to carry forward what still matters from prior interactions, update it when reality changes, and reconstruct useful context later  -  in the right form, at the right time, for the right situation.
 
 ### Continuity vs. Memory
 
@@ -108,11 +108,11 @@ Continuity is a **layer**, not a feature. It sits below the intelligence layer (
 
 Any system claiming to implement continuity MUST satisfy all 7 properties. Each property is defined abstractly and paired with a testable requirement.
 
-**On derivation:** These properties were not derived from theory and then tested. They were discovered empirically — by building a continuity system, running it against hundreds of real-world narratives, and identifying what breaks when each property is absent. Remove persistence and the system forgets between sessions. Remove update handling and the system contradicts itself. Remove disambiguation and the system conflates different people's lives. Each property represents a failure mode that was observed, diagnosed, and formalized. They are foundational in the same way that normalization rules in database theory are foundational: there are a finite number of them, they are identifiable from practice, they are independently defensible, and additional properties can be built upon them.
+**On derivation:** These properties were not derived from theory and then tested. They were discovered empirically  -  by building a continuity system, running it against hundreds of real-world narratives, and identifying what breaks when each property is absent. Remove persistence and the system forgets between sessions. Remove update handling and the system contradicts itself. Remove disambiguation and the system conflates different people's lives. Each property represents a failure mode that was observed, diagnosed, and formalized. They are foundational in the same way that normalization rules in database theory are foundational: there are a finite number of them, they are identifiable from practice, they are independently defensible, and additional properties can be built upon them.
 
 ### Property 1: Persistence Beyond Session
 
-**Definition:** Continuity state survives session termination. If the model shuts down, the app closes, the device restarts, or the user returns after an arbitrary delay — the continuity state still exists and is recoverable.
+**Definition:** Continuity state survives session termination. If the model shuts down, the app closes, the device restarts, or the user returns after an arbitrary delay  -  the continuity state still exists and is recoverable.
 
 **Testable Requirement:** After ingesting a set of facts, terminate the process. Restart with a new process. All previously ingested facts MUST be retrievable with identical accuracy.
 
@@ -122,7 +122,7 @@ Any system claiming to implement continuity MUST satisfy all 7 properties. Each 
 
 **Definition:** Real life changes. Appointments move. Relationships evolve. Plans are revised. A continuity system MUST preserve both historical state and current state without conflating them. "I was nervous before, I feel better now" must become ordered reality, not noise.
 
-**Testable Requirement:** After ingesting a fact, ingest an update to that fact. Query for the current state — the system MUST return the updated value. Query for what changed — the system MUST distinguish previous state from current state.
+**Testable Requirement:** After ingesting a fact, ingest an update to that fact. Query for the current state  -  the system MUST return the updated value. Query for what changed  -  the system MUST distinguish previous state from current state.
 
 **What this excludes:** Append-only systems that cannot represent state change. Systems where updates create duplicate or contradictory entries.
 
@@ -130,7 +130,7 @@ Any system claiming to implement continuity MUST satisfy all 7 properties. Each 
 
 **Definition:** Not just what happened, but when, in what sequence, and with what current status. "Tomorrow" must resolve to an actual date. "Moved to Wednesday" must overwrite timing while preserving the fact of change. "Last time this failed" must remain distinct from "this is what we do now."
 
-**Testable Requirement:** Ingest facts with temporal references (relative and absolute). Query for temporal state — the system MUST return correctly resolved dates, correct sequencing, and correct current status of time-sensitive facts.
+**Testable Requirement:** Ingest facts with temporal references (relative and absolute). Query for temporal state  -  the system MUST return correctly resolved dates, correct sequencing, and correct current status of time-sensitive facts.
 
 **What this excludes:** Systems that store timestamps but cannot reason about relative time, sequence, or temporal status (past / active / upcoming / overdue).
 
@@ -138,7 +138,7 @@ Any system claiming to implement continuity MUST satisfy all 7 properties. Each 
 
 **Definition:** Two people can have similar events. Two entities can be involved in similar processes. Two feelings can exist around two different situations. Continuity MUST keep subjects, entities, and contextual attachments correctly separated.
 
-**Testable Requirement:** Ingest facts from two or more distinct narratives that share overlapping vocabulary (e.g., two different job interviews, two different people named "Sarah"). Query for each independently — the system MUST return the correct facts for the correct narrative without cross-contamination.
+**Testable Requirement:** Ingest facts from two or more distinct narratives that share overlapping vocabulary (e.g., two different job interviews, two different people named "Sarah"). Query for each independently  -  the system MUST return the correct facts for the correct narrative without cross-contamination.
 
 **What this excludes:** Systems that rely solely on semantic similarity for retrieval, which will conflate similar-but-distinct narratives.
 
@@ -146,15 +146,15 @@ Any system claiming to implement continuity MUST satisfy all 7 properties. Each 
 
 **Definition:** A continuity system answers not only direct factual questions, but **situation-level** questions. Not just "When is my interview?" but "Summarize my current situation," "Why am I anxious?," "What am I preparing for?," "What changed since last time?" This requires combining multiple stored traces into a coherent present-tense state.
 
-**Testable Requirement:** After ingesting a multi-turn narrative spanning multiple facts across emotional, temporal, relational, and logistical dimensions — the system MUST retrieve a set of connected, relevant facts sufficient to reconstruct the situation. Retrieval of isolated fragments is insufficient.
+**Testable Requirement:** After ingesting a multi-turn narrative spanning multiple facts across emotional, temporal, relational, and logistical dimensions  -  the system MUST retrieve a set of connected, relevant facts sufficient to reconstruct the situation. Retrieval of isolated fragments is insufficient.
 
 **What this excludes:** Systems that can only answer single-fact lookup questions. Systems that return ranked chunks without coherence.
 
 ### Property 6: Model Independence
 
-**Definition:** If continuity is real, it does not live inside one model session. One model can write the situation. Another model — or a future version of the same model — can read and reconstruct it later. The continuity layer is below the intelligence layer, not trapped inside it.
+**Definition:** If continuity is real, it does not live inside one model session. One model can write the situation. Another model  -  or a future version of the same model  -  can read and reconstruct it later. The continuity layer is below the intelligence layer, not trapped inside it.
 
-The intelligence layer is not static. Today it is large language models. Tomorrow it may be vision models, world models, hearing models, embodied agents, or architectures that do not yet exist. A continuity standard tied to any specific model architecture dies when that architecture is superseded. The 7 properties and 10 checkpoints defined in this framework do not reference LLMs because they should not. They describe what continuity *is* — not what today's AI happens to look like. A standard is a pillar. It does not sway every time the field changes direction.
+The intelligence layer is not static. Today it is large language models. Tomorrow it may be vision models, world models, hearing models, embodied agents, or architectures that do not yet exist. A continuity standard tied to any specific model architecture dies when that architecture is superseded. The 7 properties and 10 checkpoints defined in this framework do not reference LLMs because they should not. They describe what continuity *is*  -  not what today's AI happens to look like. A standard is a pillar. It does not sway every time the field changes direction.
 
 **Testable Requirement:** Ingest facts using one model (or no model at all). Retrieve and verify using a different model or process. Accuracy MUST NOT degrade due to the model change.
 
@@ -162,7 +162,7 @@ The intelligence layer is not static. Today it is large language models. Tomorro
 
 ### Property 7: Operational Usefulness
 
-**Definition:** Continuity matters beyond personal chat. In a clinic, library, service desk, robotic system, or workflow — continuity means the system does not restart from zero. It carries forward repeated context, user needs, prior failures, preferences, and unresolved tasks.
+**Definition:** Continuity matters beyond personal chat. In a clinic, library, service desk, robotic system, or workflow  -  continuity means the system does not restart from zero. It carries forward repeated context, user needs, prior failures, preferences, and unresolved tasks.
 
 **Testable Requirement:** The continuity system MUST function across at least 2 distinct application domains (e.g., personal assistant + institutional service) without architectural modification to the continuity layer itself. Domain-specific adaptations may exist above the layer, but the persistence, update, temporal, disambiguation, and reconstruction logic MUST be shared.
 
@@ -172,13 +172,13 @@ The intelligence layer is not static. Today it is large language models. Tomorro
 
 ## 4. ATANT Methodology
 
-ATANT tests continuity through **narrative simulation** — not synthetic benchmarks, not isolated fact pairs, but realistic multi-turn conversations that mirror how humans actually communicate with AI systems over time.
+ATANT tests continuity through **narrative simulation**  -  not synthetic benchmarks, not isolated fact pairs, but realistic multi-turn conversations that mirror how humans actually communicate with AI systems over time.
 
 ### 4.1 Core Principles
 
 **Principle 1: Model Agnosticism**
 
-ATANT evaluates the continuity layer, not the intelligence layer above it. Tests inject text directly into the write path and verify output directly from the read path. No model — language, vision, or otherwise — is included in the evaluation loop.
+ATANT evaluates the continuity layer, not the intelligence layer above it. Tests inject text directly into the write path and verify output directly from the read path. No model  -  language, vision, or otherwise  -  is included in the evaluation loop.
 
 This is the foundational design decision. The continuity layer must be correct independent of whatever intelligence layer sits on top of it. If the engines are proven correct without a model, then the only remaining variable when any model is added is: *"Does the model use the facts it's given?"* That is an integration problem, not an architecture problem. ATANT tests the architecture.
 
@@ -201,7 +201,7 @@ Same input, same output, every time. ATANT tests run deterministically. There is
 
 **Principle 5: Progressive Difficulty (The Sequence)**
 
-ATANT is not a single test. It is a **sequence** — an ordered methodology for building and validating continuity systems. Each phase builds on the previous one and tests a harder property:
+ATANT is not a single test. It is a **sequence**  -  an ordered methodology for building and validating continuity systems. Each phase builds on the previous one and tests a harder property:
 
 1. **Isolated → Stress:** Does the system work? Does it generalize?
 2. **Stress → Cumulative:** Does it work when narratives coexist and compete?
@@ -209,14 +209,14 @@ ATANT is not a single test. It is a **sequence** — an ordered methodology for 
 4. **Scale → Proactive:** Does the system know when to surface information unprompted?
 5. **Proactive → Latency:** Is it fast enough to be useful in real time?
 
-A team building a continuity system should follow this sequence. If isolated mode fails, cumulative mode will be worse. If cumulative fails at 50, it will fail harder at 250. The sequence tells you where you are, what to fix next, and when you're ready for the next level. That is the value of ATANT — not any single score, but the roadmap for knowing where your system stands.
+A team building a continuity system should follow this sequence. If isolated mode fails, cumulative mode will be worse. If cumulative fails at 50, it will fail harder at 250. The sequence tells you where you are, what to fix next, and when you're ready for the next level. That is the value of ATANT  -  not any single score, but the roadmap for knowing where your system stands.
 
 ### 4.2 What ATANT Does NOT Test
 
-- **Response quality** — ATANT does not evaluate how well the LLM phrases its answer. It evaluates whether the correct facts are available to the LLM.
-- **User experience** — ATANT does not measure latency, tone, personality, or interface quality.
-- **Safety or alignment** — ATANT does not test for harmful outputs, bias, or policy compliance.
-- **General knowledge** — ATANT explicitly includes general knowledge queries as negative examples (the system should NOT retrieve personal facts for "What is photosynthesis?").
+- **Response quality**  -  ATANT does not evaluate how well the LLM phrases its answer. It evaluates whether the correct facts are available to the LLM.
+- **User experience**  -  ATANT does not measure latency, tone, personality, or interface quality.
+- **Safety or alignment**  -  ATANT does not test for harmful outputs, bias, or policy compliance.
+- **General knowledge**  -  ATANT explicitly includes general knowledge queries as negative examples (the system should NOT retrieve personal facts for "What is photosynthesis?").
 
 ---
 
@@ -232,17 +232,17 @@ Implementations may name their internal components differently. The checkpoints 
 |----|------|-------------------|---------------|
 | CP1 | **Input Classification** | The system correctly classifies the type and intent of the input utterance. Personal statements, questions, updates, general knowledge queries, and noise are distinguished. | Classification matches expected type for each test utterance. |
 | CP2 | **Fact Extraction & Storage** | The system extracts structured facts from the input and stores them durably. For a statement like "My sister Emily lives in Portland," the system must store the relationship (sister), the name (Emily), and the location (Portland) as retrievable structured data. | All expected factual keywords are present in storage after ingestion. |
-| CP3 | **Predictive Indexing** | The system generates predicted queries at write time — anticipating how the stored fact might later be asked about. This enables reconstruction, not just retrieval. | At least 1 predicted query exists per stored fact. |
+| CP3 | **Predictive Indexing** | The system generates predicted queries at write time  -  anticipating how the stored fact might later be asked about. This enables reconstruction, not just retrieval. | At least 1 predicted query exists per stored fact. |
 | CP4 | **Type Tagging** | Stored facts are tagged with semantic types (PERSON, PLACE, ORGANIZATION, TIME, EMOTION, etc.) enabling structured retrieval. | Type tags match expected categories. |
 
 ### Read-Path Checkpoints
 
 | CP | Name | What It Verifies | Pass Criteria |
 |----|------|-------------------|---------------|
-| CP5 | **Query Classification** | The system correctly classifies incoming questions by type — factual recall, temporal query, emotional state query, situation summary, general knowledge, etc. | Query type matches expected classification. |
+| CP5 | **Query Classification** | The system correctly classifies incoming questions by type  -  factual recall, temporal query, emotional state query, situation summary, general knowledge, etc. | Query type matches expected classification. |
 | CP6 | **Structural Matching** | The system identifies the correct stored fact(s) that answer the query, using structural matching rather than (or in addition to) semantic similarity alone. | Correct fact appears in top-k retrieval candidates. |
 | CP7 | **Convergence** | For reconstruction queries (situation-level questions), the system activates multiple relevant traces and converges them into a coherent answer set. | Convergence gate activates and returns a multi-fact candidate set. |
-| CP8 | **Final Answer Correctness** | The system's final retrieved answer contains the expected factual content. This is the **primary evaluation checkpoint** — all others are diagnostic. | All expected keywords present in the final answer. |
+| CP8 | **Final Answer Correctness** | The system's final retrieved answer contains the expected factual content. This is the **primary evaluation checkpoint**  -  all others are diagnostic. | All expected keywords present in the final answer. |
 
 ### Cross-Cutting Checkpoints
 
@@ -253,9 +253,9 @@ Implementations may name their internal components differently. The checkpoints 
 
 ### Checkpoint Hierarchy
 
-**CP8 is the definitive checkpoint.** A system that passes CP8 for all questions has demonstrated that the correct facts are retrievable. Checkpoints CP1–CP7 and CP9–CP10 are **diagnostic** — they identify where failures occur in the pipeline when CP8 fails.
+**CP8 is the definitive checkpoint.** A system that passes CP8 for all questions has demonstrated that the correct facts are retrievable. Checkpoints CP1–CP7 and CP9–CP10 are **diagnostic**  -  they identify where failures occur in the pipeline when CP8 fails.
 
-A system MAY achieve CP8 correctness through different internal architectures. The standard does not mandate how the system is built — only that the end-to-end result is correct and that the diagnostic checkpoints provide visibility into why.
+A system MAY achieve CP8 correctness through different internal architectures. The standard does not mandate how the system is built  -  only that the end-to-end result is correct and that the diagnostic checkpoints provide visibility into why.
 
 ---
 
@@ -263,7 +263,7 @@ A system MAY achieve CP8 correctness through different internal architectures. T
 
 ### 6.1 Design Philosophy
 
-ATANT stories are **narrative simulations** — realistic multi-turn conversations that a human might have with an AI system over hours, days, or weeks. Each story tests a specific combination of continuity capabilities within a naturalistic context.
+ATANT stories are **narrative simulations**  -  realistic multi-turn conversations that a human might have with an AI system over hours, days, or weeks. Each story tests a specific combination of continuity capabilities within a naturalistic context.
 
 Stories are NOT:
 - Synthetic fact pairs ("store X, retrieve X")
@@ -279,7 +279,7 @@ Stories ARE:
 
 ### 6.2 Life Domain Coverage
 
-The standard corpus covers 6 **life domains** — not productivity domains, not enterprise workflows, not corporate use cases. This is intentional. ATANT tests continuity for *human life*: personal, private, emotional, messy, contradictory, and ongoing. The domains were chosen because continuity is fundamentally about carrying a person's life forward, not about task management. Operational and enterprise domains can be added in future versions, but the foundation is human narrative truth.
+The standard corpus covers 6 **life domains**  -  not productivity domains, not enterprise workflows, not corporate use cases. This is intentional. ATANT tests continuity for *human life*: personal, private, emotional, messy, contradictory, and ongoing. The domains were chosen because continuity is fundamentally about carrying a person's life forward, not about task management. Operational and enterprise domains can be added in future versions, but the foundation is human narrative truth.
 
 The 6 domains:
 
@@ -368,7 +368,7 @@ A valid ATANT story MUST:
 2. Include at least 2 multi-fact utterances (utterances containing 2+ storable facts).
 3. Include at least 1 temporal reference (relative or absolute).
 4. Include at least 3 verification questions with expected answers.
-5. Be naturalistic — reflecting how a real human would speak, not how a database would be populated.
+5. Be naturalistic  -  reflecting how a real human would speak, not how a database would be populated.
 
 A valid ATANT story SHOULD:
 
@@ -421,7 +421,7 @@ ATANT defines 4 compliance levels. Each level requires passing the previous leve
 
 **Requirement:** Pass Level 3 PLUS pass all 250 stories in cumulative mode.
 
-**What it proves:** The system disambiguates at scale. 250 narratives, ~1,830 questions, all coexisting — and the system still retrieves correctly.
+**What it proves:** The system disambiguates at scale. 250 narratives, ~1,830 questions, all coexisting  -  and the system still retrieves correctly.
 
 **Minimum passing score:** 100% of CP8 for all 250 stories in cumulative mode.
 
@@ -485,19 +485,19 @@ Each compliance level can be achieved at three tiers:
 
 Below 90% does not constitute compliance. A system that retrieves the wrong fact for the wrong context more than 10% of the time has a structural problem, not an edge case.
 
-**Full compliance (Gold)** is the target. Silver and Bronze exist because honest reporting matters more than inflated claims — and because the hardest levels (ATANT-Scale) test disambiguation at a scale that pushes current architectures to their limits. Our own reference implementation achieves Gold at ATANT-Cumulative and Silver (96%) at ATANT-Scale. We report that honestly rather than excluding the level we haven't fully passed.
+**Full compliance (Gold)** is the target. Silver and Bronze exist because honest reporting matters more than inflated claims  -  and because the hardest levels (ATANT-Scale) test disambiguation at a scale that pushes current architectures to their limits. Our own reference implementation achieves Gold at ATANT-Cumulative and Silver (96%) at ATANT-Scale. We report that honestly rather than excluding the level we haven't fully passed.
 
 ---
 
 ## 10. Reference Implementation Results
 
-The following results were achieved by the first system evaluated against ATANT: the NURA Memory Pipeline developed by Kenotic Labs. All results are LLM-independent — no language model was used in the evaluation loop.
+The following results were achieved by the first system evaluated against ATANT: the NURA Memory Pipeline developed by Kenotic Labs. All results are LLM-independent  -  no language model was used in the evaluation loop.
 
 ### 10.1 Why Cumulative Is the Real Test
 
 Isolated mode (fresh database per story) proves that the write path and read path work. Any reasonably engineered system should eventually pass isolated mode. It is necessary but not sufficient.
 
-**Cumulative mode is where continuity is actually tested.** When 50 different life narratives coexist in the same database — 50 different jobs, 50 different relationships, 50 different health situations, hundreds of overlapping names, dates, emotions, and predicates — the system must retrieve the *right* fact for the *right* context without cross-contamination. This is disambiguation under load. This is what real-world continuity looks like: a system that carries forward many users, many situations, many overlapping contexts, and still gets it right.
+**Cumulative mode is where continuity is actually tested.** When 50 different life narratives coexist in the same database  -  50 different jobs, 50 different relationships, 50 different health situations, hundreds of overlapping names, dates, emotions, and predicates  -  the system must retrieve the *right* fact for the *right* context without cross-contamination. This is disambiguation under load. This is what real-world continuity looks like: a system that carries forward many users, many situations, many overlapping contexts, and still gets it right.
 
 Most memory systems that work in isolation will fail in cumulative mode. Semantic similarity search conflates similar-but-distinct narratives. That is the gap between retrieval and continuity.
 
@@ -528,7 +528,7 @@ The progression from legacy to current architecture demonstrates that continuity
 |------|-------------|---------|----------|-------|
 | Jan 2026 | Legacy scoring (with LLM) | 50 | 58% (29/50) | Initial pipeline |
 | Feb 1 | Optimized scoring (with LLM) | 50 | 72% (36/50) | Tuning gains |
-| Feb 15 | Over-tuned scoring (with LLM) | 50 | 58% (29/50) | Regression — fixing one story breaks another |
+| Feb 15 | Over-tuned scoring (with LLM) | 50 | 58% (29/50) | Regression  -  fixing one story breaks another |
 
 The legacy pipeline suffered from **whack-a-mole regressions**: optimizing for one narrative pattern would break retrieval for another. This is the signature failure mode of systems that lack architectural continuity support.
 
@@ -536,34 +536,34 @@ The legacy pipeline suffered from **whack-a-mole regressions**: optimizing for o
 
 | Suite | Date | Mode | Stories | Questions | CP8 Rate | What Changed |
 |-------|------|------|---------|-----------|----------|-------------|
-| 1.0 | Feb 25 | Isolated | 50 | 304 / 304 | **100%** | New architecture. CP1 (classification) at 80% — write path not yet clean. But all questions answered correctly. |
+| 1.0 | Feb 25 | Isolated | 50 | 304 / 304 | **100%** | New architecture. CP1 (classification) at 80%  -  write path not yet clean. But all questions answered correctly. |
 | 1.1 | Feb 28 | Isolated | 50 | 304 / 304 | **100%** | All 10 checkpoints at 100%. Write path fully clean. |
 | 1.2 | Feb 28 | Isolated | 100 | 656 / 671 | **98%** | Stress test: 50 new stories. **12 story failures.** Structural matcher failed on niche predicates (bonsai nurseries, falconry weights, cave crayfish). Test caught real generalization gaps. |
 | 2.0 | Mar 1 | Isolated | 100 | 671 / 671 | **100%** | Structural matcher fixes. All 100 stories pass. |
 | 2.1 | Mar 1 | Isolated | 250 | 1,835 / 1,835 | **100%** | Full scale. 250 stories, 1,835 questions, zero errors. |
-| — | Mar 14 | Cumulative | 50 | 304 / 304 | **100%** | 50 narratives coexisting. Perfect disambiguation. |
-| — | Mar 16 | Cumulative | 250 | 1,761 / 1,835 | **96%** | 250 narratives coexisting. 74 remaining failures from predicate collision at scale. |
+|  -  | Mar 14 | Cumulative | 50 | 304 / 304 | **100%** | 50 narratives coexisting. Perfect disambiguation. |
+|  -  | Mar 16 | Cumulative | 250 | 1,761 / 1,835 | **96%** | 250 narratives coexisting. 74 remaining failures from predicate collision at scale. |
 
 **Key architectural milestones that drove the progression:**
 
-1. **Grammar-first classification** (594 Equation System) — replaced probabilistic scoring with deterministic sentence decomposition. Eliminated the whack-a-mole regression pattern.
-2. **DTCM write path** — 5 independent traces + predicted query-answer pairs at write time. Enabled convergence-based retrieval instead of similarity-only retrieval.
-3. **Predicate Lexicon** — bridges storage predicates to question vocabulary. Fixed the vocabulary gap that caused Suite 1.2 failures.
-4. **Inverted Scoring Formula** — fingerprint coherence as primary signal. Stabilized structural matching on adversarial patterns.
-5. **ParsedUtterance** — single canonical parse object. 3x fewer grammar calls, consistent representation.
-6. **Input Bridge** — STT noise normalization. Transparent on clean input, enabling voice pipeline to use the same engines.
+1. **Grammar-first classification** (594 Equation System)  -  replaced probabilistic scoring with deterministic sentence decomposition. Eliminated the whack-a-mole regression pattern.
+2. **DTCM write path**  -  5 independent traces + predicted query-answer pairs at write time. Enabled convergence-based retrieval instead of similarity-only retrieval.
+3. **Predicate Lexicon**  -  bridges storage predicates to question vocabulary. Fixed the vocabulary gap that caused Suite 1.2 failures.
+4. **Inverted Scoring Formula**  -  fingerprint coherence as primary signal. Stabilized structural matching on adversarial patterns.
+5. **ParsedUtterance**  -  single canonical parse object. 3x fewer grammar calls, consistent representation.
+6. **Input Bridge**  -  STT noise normalization. Transparent on clean input, enabling voice pipeline to use the same engines.
 
 ### 10.5 What the Failures Reveal
 
 The failures are as important as the passes.
 
-**Suite 1.2 failures (12 stories, 15 questions):** The structural matcher could not resolve niche predicates — questions about specific hobbies (bonsai, falconry, cave exploration) where the predicate vocabulary was too specialized for the lexicon. These were real generalization failures, not test errors. The fix (Predicate Lexicon expansion + value word lookup) was architectural, not parameter tuning.
+**Suite 1.2 failures (12 stories, 15 questions):** The structural matcher could not resolve niche predicates  -  questions about specific hobbies (bonsai, falconry, cave exploration) where the predicate vocabulary was too specialized for the lexicon. These were real generalization failures, not test errors. The fix (Predicate Lexicon expansion + value word lookup) was architectural, not parameter tuning.
 
-**250-story cumulative failures (74 questions):** When 250 life narratives coexist, similarly-named predicates from different stories compete. "What was the name?" matches dozens of potential triples across dozens of stories. The system must disambiguate by context, entity, and trace convergence — not just predicate similarity. The 4% gap represents the current frontier of disambiguation at scale.
+**250-story cumulative failures (74 questions):** When 250 life narratives coexist, similarly-named predicates from different stories compete. "What was the name?" matches dozens of potential triples across dozens of stories. The system must disambiguate by context, entity, and trace convergence  -  not just predicate similarity. The 4% gap represents the current frontier of disambiguation at scale.
 
-**CP4 failures (Type Tagging, 51.6% in Suite 2.1):** Object type tagging fails on exotic domain-specific objects ("varroa mite," "Babcock and Wilcox boiler," "Paraloid B-72 adhesive"). These are diagnostic failures — they do not affect answer correctness (CP8 is 100%) but indicate that the type ontology needs expansion for niche domains. This is an honest limitation.
+**CP4 failures (Type Tagging, 51.6% in Suite 2.1):** Object type tagging fails on exotic domain-specific objects ("varroa mite," "Babcock and Wilcox boiler," "Paraloid B-72 adhesive"). These are diagnostic failures  -  they do not affect answer correctness (CP8 is 100%) but indicate that the type ontology needs expansion for niche domains. This is an honest limitation.
 
-**CP9 failures (Temporal System, 90.8% in Suite 2.1):** Format variance in how stories express time. The temporal engine correctly resolves references, but the test harness flagged stories where grief-related events were not classified as permanent. This is a philosophical edge case — when does an event become permanent? — not a retrieval failure.
+**CP9 failures (Temporal System, 90.8% in Suite 2.1):** Format variance in how stories express time. The temporal engine correctly resolves references, but the test harness flagged stories where grief-related events were not classified as permanent. This is a philosophical edge case  -  when does an event become permanent?  -  not a retrieval failure.
 
 ### 10.6 Honest Limitations
 
@@ -605,7 +605,7 @@ The 7 properties and the checkpoint methodology are the stable foundation. The c
 
 ATANT v1.0 is published and maintained by Kenotic Labs. Contributions, feedback, and independent evaluation results are welcomed.
 
-The standard is open. The story corpus is open. Any system can be evaluated. The goal is not to gatekeep — it is to give the industry a shared way to measure a property that increasingly matters.
+The standard is open. The story corpus is open. Any system can be evaluated. The goal is not to gatekeep  -  it is to give the industry a shared way to measure a property that increasingly matters.
 
 ---
 
