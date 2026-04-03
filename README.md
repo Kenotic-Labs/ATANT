@@ -6,6 +6,8 @@ An open evaluation framework for measuring AI continuity : The ability to persis
 
 Published by [Kenotic Labs](https://kenoticlabs.com).
 
+📄 **[Read the Full Paper (PDF)](ATANT%20Evaluation%20Framework.pdf)**
+
 ---
 
 ## What is Continuity?
