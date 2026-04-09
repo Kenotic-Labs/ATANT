@@ -6,7 +6,7 @@ An open evaluation framework for measuring AI continuity : The ability to persis
 
 Published by [Kenotic Labs](https://kenoticlabs.com).
 
-📄 **[Read the Full Paper (PDF)](ATANT%20Evaluation%20Framework.pdf)**
+📄 **[Read the Paper on arXiv](https://arxiv.org/abs/2604.06710)** | [PDF](ATANT%20Evaluation%20Framework.pdf)
 
 ---
 
@@ -102,9 +102,12 @@ The full ATANT v1.0 specification is in [`docs/ATANT_Standard_v1.0.md`](docs/ATA
 ## Citation
 
 ```
-Kenotic Labs. (2026). ATANT v1.0: A Standard for Testing AI Continuity.
-Automated Test for Acceptance of Narrative Truth. April 2026.
-Author: Samuel Tanguturi, Founder, Kenotic Labs.
+@article{tanguturi2026atant,
+  title={ATANT: An Evaluation Framework for AI Continuity},
+  author={Tanguturi, Samuel Sameer},
+  journal={arXiv preprint arXiv:2604.06710},
+  year={2026}
+}
 ```
 
 ---
