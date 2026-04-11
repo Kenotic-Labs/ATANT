@@ -222,7 +222,7 @@ A team building a continuity system should follow this sequence. If isolated mod
 
 ## 5. The Checkpoint System
 
-ATANT defines **10 standard checkpoints** that verify correctness at each stage of the continuity pipeline. Checkpoints are grouped into write-path verification (CP1–CP4), read-path verification (CP5–CP8), and cross-cutting concerns (CP9–CP10).
+ATANT defines **10 standard checkpoints** that verify correctness at each stage of the continuity pipeline. Checkpoints are grouped into write-path verification (CP1-CP4), read-path verification (CP5-CP8), and cross-cutting concerns (CP9-CP10).
 
 Implementations may name their internal components differently. The checkpoints define **what must be verified**, not how the system is architected.
 
@@ -253,7 +253,7 @@ Implementations may name their internal components differently. The checkpoints 
 
 ### Checkpoint Hierarchy
 
-**CP8 is the definitive checkpoint.** A system that passes CP8 for all questions has demonstrated that the correct facts are retrievable. Checkpoints CP1–CP7 and CP9–CP10 are **diagnostic**  -  they identify where failures occur in the pipeline when CP8 fails.
+**CP8 is the definitive checkpoint.** A system that passes CP8 for all questions has demonstrated that the correct facts are retrievable. Checkpoints CP1-CP7 and CP9-CP10 are **diagnostic**  -  they identify where failures occur in the pipeline when CP8 fails.
 
 A system MAY achieve CP8 correctness through different internal architectures. The standard does not mandate how the system is built  -  only that the end-to-end result is correct and that the diagnostic checkpoints provide visibility into why.
 
@@ -440,7 +440,7 @@ Any system claiming ATANT compliance MUST publish:
 
 1. The compliance level achieved.
 2. The exact pass rate (stories passed / total, questions passed / total).
-3. Per-checkpoint pass rates for CP1–CP10.
+3. Per-checkpoint pass rates for CP1-CP10.
 4. Whether an LLM was used in the evaluation loop (if yes, this must be disclosed and the result is considered **ATANT-Assisted**, not pure ATANT compliance).
 
 ---
@@ -460,9 +460,9 @@ For each story in the test corpus:
 
 1. **(Isolated mode only)** Clear all persistent state.
 2. **Ingest:** Feed each conversation turn through the system's write path, in order, respecting simulated timestamps.
-3. **Checkpoint verification:** After ingestion, verify CP1–CP4 (write-path checkpoints) against expected values.
+3. **Checkpoint verification:** After ingestion, verify CP1-CP4 (write-path checkpoints) against expected values.
 4. **Query:** Feed each verification question through the system's read path.
-5. **Answer verification:** Check each answer against `expected_contains`. Verify CP5–CP8 (read-path checkpoints).
+5. **Answer verification:** Check each answer against `expected_contains`. Verify CP5-CP8 (read-path checkpoints).
 6. **Cross-cutting verification:** Verify CP9 (temporal) and CP10 (adaptation) where applicable.
 7. **Score:** Record pass/fail for each question and each checkpoint.
 
@@ -480,8 +480,8 @@ Each compliance level can be achieved at three tiers:
 | Tier | CP8 Pass Rate | What It Means |
 |------|---------------|---------------|
 | **Gold** | 100% | Full continuity at this level. No retrieval errors. |
-| **Silver** | 95–99% | Near-complete continuity. Residual failures are edge cases, not architectural gaps. |
-| **Bronze** | 90–94% | Functional continuity with known limitations. System works but has measurable disambiguation or retrieval gaps. |
+| **Silver** | 95-99% | Near-complete continuity. Residual failures are edge cases, not architectural gaps. |
+| **Bronze** | 90-94% | Functional continuity with known limitations. System works but has measurable disambiguation or retrieval gaps. |
 
 Below 90% does not constitute compliance. A system that retrieves the wrong fact for the wrong context more than 10% of the time has a structural problem, not an edge case.
 
@@ -522,7 +522,7 @@ Most memory systems that work in isolation will fail in cumulative mode. Semanti
 
 The progression from legacy to current architecture demonstrates that continuity is an **architecture problem**, not a tuning problem. The legacy pipeline hit a ceiling and regressed under optimization pressure. The current architecture broke through that ceiling in days.
 
-**Phase 1: Legacy Pipeline (January–February 2026)**
+**Phase 1: Legacy Pipeline (January-February 2026)**
 
 | Date | Architecture | Stories | CP8 Rate | Notes |
 |------|-------------|---------|----------|-------|
@@ -532,7 +532,7 @@ The progression from legacy to current architecture demonstrates that continuity
 
 The legacy pipeline suffered from **whack-a-mole regressions**: optimizing for one narrative pattern would break retrieval for another. This is the signature failure mode of systems that lack architectural continuity support.
 
-**Phase 2: Equation System + ATANT Pipeline (February–March 2026)**
+**Phase 2: Equation System + ATANT Pipeline (February-March 2026)**
 
 | Suite | Date | Mode | Stories | Questions | CP8 Rate | What Changed |
 |-------|------|------|---------|-----------|----------|-------------|
