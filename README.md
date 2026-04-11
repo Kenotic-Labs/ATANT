@@ -2,21 +2,48 @@
 
 **Automated Test for Acceptance of Narrative Truth**
 
-An open evaluation framework for measuring AI continuity : The ability to persist, update, disambiguate, and reconstruct meaningful context across time.
+An open evaluation framework for measuring AI continuity: the ability to persist, update, disambiguate, and reconstruct meaningful context across time.
 
-Published by [Kenotic Labs](https://kenoticlabs.com).
+Published by [Kenotic Labs](https://kenoticlabs.com), the company building the continuity layer for AI systems.
 
-📄 **[Read the Paper on arXiv](https://arxiv.org/abs/2604.06710)** | [PDF](ATANT%20Evaluation%20Framework.pdf)
+- Website: https://kenoticlabs.com
+- Insights: https://kenoticlabs.com/insights
+- Demo: https://kenoticlabs.com/demo
+- AI-readable overview: https://kenoticlabs.com/llms.txt
+- Full AI-readable context: https://kenoticlabs.com/llms-full.txt
+
+?? **[Read the Paper on arXiv](https://arxiv.org/abs/2604.06710)** | [PDF](ATANT%20Evaluation%20Framework.pdf)
+
+---
+
+## Why ATANT Exists
+
+Most AI systems today can retrieve information, summarize history, and answer well inside a session.
+
+What they still struggle to do is preserve the living state of a situation across time.
+
+They lose track of:
+
+- what is still active
+- what changed
+- what is resolved
+- what still matters
+- what should happen next
+
+Kenotic Labs describes that missing capability as **continuity**.
+
+ATANT exists to measure it.
 
 ---
 
 ## What is Continuity?
 
-Most AI systems today are session-based. You say something. It responds. The moment ends.
+**Continuity** is the system property that makes AI coherent across time, not just intelligent per session.
 
-**Continuity** is the system property that makes AI coherent across life, not just intelligent per session. It is the logic that determines what should persist, in what form, what has changed, what still matters, and how to reconstruct it when needed.
+It is the logic that determines what should persist, what changed, what still matters, and how to reconstruct the current situation when needed.
 
-Memory stores the past. Continuity keeps the right parts alive in the present.
+Memory stores the past.
+Continuity keeps the right parts alive in the present.
 
 ---
 
@@ -24,16 +51,16 @@ Memory stores the past. Continuity keeps the right parts alive in the present.
 
 ATANT is the first published evaluation framework for AI continuity. It is:
 
-- **System-agnostic** : Any AI system can be evaluated
-- **Model-independent** : No LLM in the evaluation loop
-- **Narrative-based** : Tests use realistic multi-turn conversations, not synthetic fact pairs
-- **Sequenced** : A progressive methodology from isolated correctness to disambiguation at scale
+- **System-agnostic**: any AI system can be evaluated
+- **Model-independent**: no LLM in the evaluation loop
+- **Narrative-based**: tests use realistic multi-turn conversations, not synthetic fact pairs
+- **Sequenced**: a progressive methodology from isolated correctness to disambiguation at scale
 
 ATANT defines:
 
-1. **7 Required Properties** of continuity (persistence, update handling, temporal ordering, disambiguation, reconstruction, model independence, operational usefulness)
-2. **10 Checkpoints** verifying correctness at each stage of the write path and read path
-3. **4 Compliance Levels** (Core, Stress, Cumulative, Scale)
+1. **7 required properties** of continuity
+2. **10 checkpoints** verifying correctness at each stage of the continuity process
+3. **4 compliance levels** from core correctness to scale
 4. **A narrative test corpus** spanning 6 life domains with 250 stories and 1,835 verification questions
 
 ---
@@ -48,7 +75,7 @@ ATANT defines:
 | 4 | **Disambiguation** | Distinct narratives stay separate despite overlapping vocabulary |
 | 5 | **Reconstruction** | The system answers situation-level questions, not just fact lookups |
 | 6 | **Model Independence** | Continuity lives below the intelligence layer, not inside it |
-| 7 | **Operational Usefulness** | Continuity works across domains : Personal, clinical, Institutional |
+| 7 | **Operational Usefulness** | Continuity works across domains: personal, clinical, institutional |
 
 ---
 
@@ -77,17 +104,45 @@ The first system evaluated against ATANT is the NURA Memory Pipeline by Kenotic 
 
 ---
 
+## Dataset
+
+The full ATANT v1.0 Narrative Test Corpus is available on Hugging Face:
+
+**[Kenotic-Labs/ATANTV1.0-corpus](https://huggingface.co/datasets/Kenotic-Labs/ATANTV1.0-corpus)**
+
+The dataset is also linked from the Hugging Face paper page at [huggingface.co/papers/2604.06710](https://huggingface.co/papers/2604.06710).
+
+Load it with:
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("Kenotic-Labs/ATANTV1.0-corpus")
+```
+
+---
+
+## Why This Matters
+
+ATANT is not just a benchmark.
+
+It is part of a larger thesis: that AI needs a continuity layer beneath the current stack, and that the ability to preserve and reconstruct situation across time will become a foundational requirement for assistants, agents, workflows, enterprise systems, care systems, and devices.
+
+ATANT is how that thesis becomes measurable.
+
+---
+
 ## Repository Structure
 
-```
+```text
 atant/
-  README.md                     # This file
+  README.md
   docs/
-    ATANT_Standard_v1.0.md      # The full standard specification
-    Story_Format_Spec.md        # YAML schema for test stories
-    Testing_Figures.md          # Results and historical progression
+    ATANT_Standard_v1.0.md
+    Story_Format_Spec.md
+    Testing_Figures.md
   corpus/
-    examples/                   # Example stories in YAML format
+    examples/
   LICENSE
 ```
 
@@ -101,7 +156,7 @@ The full ATANT v1.0 specification is in [`docs/ATANT_Standard_v1.0.md`](docs/ATA
 
 ## Citation
 
-```
+```bibtex
 @article{tanguturi2026atant,
   title={ATANT: An Evaluation Framework for AI Continuity},
   author={Tanguturi, Samuel Sameer},
