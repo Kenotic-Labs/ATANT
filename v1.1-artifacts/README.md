@@ -34,4 +34,4 @@ Total: 1,986 QA pairs across 10 conversations.
 
 ## What this supports
 
-The v1.1 paper (arXiv:TBD) argues that LOCOMO's published category labels do not match the question shapes they contain, and that 444 of 446 Category-5 items are unscorable by construction under the Mem0 reference runner's `answer_matches` function. The numbers in the table above are the structural evidence for both claims.
+The v1.1 paper (arXiv:2604.10981, https://arxiv.org/abs/2604.10981) argues that LOCOMO's published category labels do not match the question shapes they contain, and that 444 of 446 Category-5 items are unscorable by construction under the Mem0 reference runner's `answer_matches` function. The numbers in the table above are the structural evidence for both claims.
