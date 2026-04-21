@@ -1,4 +1,4 @@
-# ATANT v1.0
+# ATANT
 
 **Automated Test for Acceptance of Narrative Truth**
 
@@ -7,12 +7,17 @@ An open evaluation framework for measuring AI continuity: the ability to persist
 Published by [Kenotic Labs](https://kenoticlabs.com), the company building the continuity layer for AI systems.
 
 - Website: https://kenoticlabs.com
+- Thesis: https://kenoticlabs.com/thesis
 - Insights: https://kenoticlabs.com/insights
 - Demo: https://kenoticlabs.com/demo
 - AI-readable overview: https://kenoticlabs.com/llms.txt
 - Full AI-readable context: https://kenoticlabs.com/llms-full.txt
 
-?? **[Read the Paper on arXiv](https://arxiv.org/abs/2604.06710)** | [PDF](ATANT%20Evaluation%20Framework.pdf)
+📄 **[ATANT v1.0 — Evaluation Framework](https://arxiv.org/abs/2604.06710)** · arXiv:2604.06710
+
+📄 **[ATANT v1.1 — Positioning Against Memory Benchmarks](https://arxiv.org/abs/2604.10981)** · arXiv:2604.10981
+
+📄 **[The Continuity Layer — Thesis](https://arxiv.org/abs/2604.17273)** · arXiv:2604.17273
 
 ---
 
@@ -122,13 +127,13 @@ ds = load_dataset("Kenotic-Labs/ATANTV1.0-corpus")
 
 ---
 
-## Why This Matters
+## The Paper Arc
 
-ATANT is not just a benchmark.
+ATANT is part of a three-paper arc:
 
-It is part of a larger thesis: that AI needs a continuity layer beneath the current stack, and that the ability to preserve and reconstruct situation across time will become a foundational requirement for assistants, agents, workflows, enterprise systems, care systems, and devices.
-
-ATANT is how that thesis becomes measurable.
+- **v1.0** — Defines the evaluation standard. 7 properties, 10 checkpoints, 250-story corpus, 96% cumulative. ([arXiv:2604.06710](https://arxiv.org/abs/2604.06710))
+- **v1.1** — Positions ATANT against 7 competing memory benchmarks. Median coverage of existing evals: 1/7 continuity properties. ([arXiv:2604.10981](https://arxiv.org/abs/2604.10981))
+- **Thesis** — The full architectural argument: why continuity is the missing layer, the kenotic framing, the four-layer arc, why now. ([arXiv:2604.17273](https://arxiv.org/abs/2604.17273))
 
 ---
 
@@ -161,6 +166,20 @@ The full ATANT v1.0 specification is in [`docs/ATANT_Standard_v1.0.md`](docs/ATA
   title={ATANT: An Evaluation Framework for AI Continuity},
   author={Tanguturi, Samuel Sameer},
   journal={arXiv preprint arXiv:2604.06710},
+  year={2026}
+}
+
+@article{tanguturi2026atantv11,
+  title={ATANT v1.1: Positioning Continuity Evaluation Against Memory, Long-Context, and Agentic-Memory Benchmarks},
+  author={Tanguturi, Samuel Sameer},
+  journal={arXiv preprint arXiv:2604.10981},
+  year={2026}
+}
+
+@article{tanguturi2026continuitylayer,
+  title={The Continuity Layer: Why Intelligence Needs an Architecture for What It Carries Forward},
+  author={Tanguturi, Samuel Sameer},
+  journal={arXiv preprint arXiv:2604.17273},
   year={2026}
 }
 ```
