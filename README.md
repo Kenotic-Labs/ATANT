@@ -17,7 +17,7 @@ Published by [Kenotic Labs](https://kenoticlabs.com), the company building the c
 
 📄 **[ATANT v1.1 — Positioning Against Memory Benchmarks](https://arxiv.org/abs/2604.10981)** · arXiv:2604.10981
 
-📄 **[The Continuity Layer — Thesis](https://arxiv.org/abs/2604.17273)** · arXiv:2604.17273
+📄 **[The Continuity Layer — Thesis](https://arxiv.org/abs/2604.17273)** · arXiv:2604.17273 · [GitHub](https://github.com/Kenotic-Labs/continuity-layer)
 
 ---
 
@@ -133,7 +133,7 @@ ATANT is part of a three-paper arc:
 
 - **v1.0** — Defines the evaluation standard. 7 properties, 10 checkpoints, 250-story corpus, 96% cumulative. ([arXiv:2604.06710](https://arxiv.org/abs/2604.06710))
 - **v1.1** — Positions ATANT against 7 competing memory benchmarks. Median coverage of existing evals: 1/7 continuity properties. ([arXiv:2604.10981](https://arxiv.org/abs/2604.10981))
-- **Thesis** — The full architectural argument: why continuity is the missing layer, the kenotic framing, the four-layer arc, why now. ([arXiv:2604.17273](https://arxiv.org/abs/2604.17273))
+- **Thesis** — The full architectural argument: why continuity is the missing layer, the kenotic framing, the four-layer arc, why now. ([arXiv:2604.17273](https://arxiv.org/abs/2604.17273) · [GitHub](https://github.com/Kenotic-Labs/continuity-layer))
 
 ---
 
